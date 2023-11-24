@@ -1,0 +1,67 @@
+Oauth2.x fetaures::NTSPBMS714(22-Feb-2022)
+==========================================
+=>it is very open standard for securing application.
+=>it can be used and implemented in any technical domain like java ,.net etc...
+=>Spring boot gives lots of abstraction while using implemennting Oauth2.x Service
+=>Oauth2.x implemnted  in ticketBooking,E-commenricial application
+=>Oauth2.x not used for Bank account creation,Credit card issue because third party services like FB contains lots of fake identities.
+=>It allows to implement SSO application
+=>If we enable OAut2.x then , no need to implement LDAP server,JWT,Security Forms concept separately in client application development.
+=>All third party application like FB ,Gmail provides 2 ways of interaction:-
+a)Direct interaction for enduser(To use the services of Third party application directly as enduser. Ex:we use FB login)
+b)Interaction as developer:(To make other Client application like redBus using third party application services.Ex:OAuth2.x impl)
+
+OAuth2.x implementation::-
+============================
+=>Register our client application with Authorization and Resource server(Third party application or services like FB,Gmail,LinkedIn) to get clientID and SecretID
+=>here FB is a itself Both Authorization and Resource server.
+=>ClientID means uniqueID
+=>SecretID means Password
+=>Authorization means login with ID and pwd in FB
+=>Resource server means inside FB resource like sharing,tagging,posting etc..
+=>
+**OAuth2.x Security implementation using spring boot:::-
+-----------------------------------------------------
+=>To implement OAuth2.x you need clientId and secret-id.
+=>Authentication object holds multiple user details like credentials,username,password
+=>Principal object holds only current username 
+
+**OAuth2 Authentication by Facebook:::-
+---------------------------------------
+->Go to https://developers.facebook.com/ then select "My Apps" then select "Other" then select "consumer" then enter application some name "BMS-NEW-A"
+then click "create app" then enter your facebook password.Now application will be created.Then Click App name(Top left corner) 
+then create test app "BMS-NEW-A - Test1"(automatically create)then finish.
+=>Then go to Settings->basic then copy client-id:668972858694758 and secret id:72d54884b3adc19e7652184afb5481c4
+=>use this client-id and secret-id in application.yml file in your project.
+
+# Cfg  FB  AuthServer Credentials  (Client Id , Secret Id)
+https://developers.facebook.com/
+ #BMS-NEW-A
+ spring.security.oauth2.client.registration.facebook.client-id=668972858694758
+ spring.security.oauth2.client.registration.facebook.client-secret=72d54884b3adc19e7652184afb5481c4
+ spring.security.oauth2.client.registration.facebook.scope=email,public_profile
+
+**OAuth2 Authentication by github:::-
+------------------------------------- 
+#niranjanaC2023
+spring.security.oauth2.client.registration.github.client-id=4cc68361cfba7e6d4778
+spring.security.oauth2.client.registration.github.client-secret=3a4deb13cd893e1ae08250946cea0c32b061f01d
+
+**OAuth2 Authentication by google:::-
+-------------------------------------
+https://console.cloud.google.com/cloud-resource-manager
+project app: NTAJBMS714proj
+
+Create project NTAJBMS714proj->then select NTAJBMS714proj ->search "credentials" in search bar->create credentials->Create OAuth client ID->click "Configure Consent screen"->select external-->then click create->
+->then select app name as "GCApp1"-->then select email niranjana.charty2013@gmail.com->then enter emailID in developer contact info(niranjana.charty2013@gmail.com)->
+->then save and continue->then save and continue->then save and continue->then Back to Dashboard->search "credentials" in search bar->create credentials->Create OAuth client ID->
+->Create OAuth client ID as "web application"->then add URI : http://localhost:4041 -> Authorized redirect URIs http://localhost:4041/login/oauth2/code/google
+->then click "create"->then copy 
+clientID: 22937668516-ug5n1kgtdakp1opf19t23jiataj46qal.apps.googleusercontent.com  
+secret-id: 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
+Creation date November 24, 2023 at 7:04:26 PM GMT+5
+
+=>then this client-id and secret-id in project application.properties and run the project http://localhost:4041/after 
+=>then login with Google,Facebook,github
+
+
