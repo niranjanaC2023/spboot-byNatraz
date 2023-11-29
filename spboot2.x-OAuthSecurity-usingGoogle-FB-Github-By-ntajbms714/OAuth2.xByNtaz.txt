@@ -41,8 +41,11 @@ https://developers.facebook.com/
  spring.security.oauth2.client.registration.facebook.client-secret=72d54884b3adc19e7652184afb5481c4
  spring.security.oauth2.client.registration.facebook.scope=email,public_profile
 
-**OAuth2 Authentication by github:::-
-------------------------------------- 
+**OAuth2 Authentication Using Github:::-
+------------------------------------------
+->Go to https://github.com/settings/developers then Developer Setting ->then OAuth App -> create New OAuth App ->BMS-NEW-A ->select ClientID and SecretID
+->clientId: 4cc68361cfba7e6d4778  clientSecret: 3a4deb13cd893e1ae08250946cea0c32b061f01d   -> then application name: BMS-NEW-A ->
+->Homepage URL:http://localhost:1319  Authorization callback URL:http://localhost:1319  -> ok
 #niranjanaC2023
 spring.security.oauth2.client.registration.github.client-id=4cc68361cfba7e6d4778
 spring.security.oauth2.client.registration.github.client-secret=3a4deb13cd893e1ae08250946cea0c32b061f01d
